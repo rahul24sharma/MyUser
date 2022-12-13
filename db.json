@@ -1,0 +1,40 @@
+{
+  "signupUsers": [
+    {
+      "FirstName": "rahul",
+      "LastName": "sharma",
+      "UserName": "rsharmaa84",
+      "Email": "rsharmaa84@gmail.com@gmail.com",
+      "Password": "Lionelmessi10@",
+      "id": 1
+    }
+  ],
+  "comments": [
+    {
+      "username": "tanishq09",
+      "password": "wadhwani09",
+      "email": "tanishqwadhwani@gmail.com",
+      "games": "Fantasy & Casino",
+      "company": "details.pdf",
+      "id": 2
+    },
+    {
+      "username": "piyushtiwari30",
+      "password": "piyush30",
+      "email": "piyush30tiwari@gmail.com",
+      "games": "Fantasy & Casino",
+      "id": 3
+    },
+    {
+      "username": "sakshamgupta",
+      "password": "gupta09",
+      "email": "sg78@gmail.com",
+      "games": "Fantasy & Casino",
+      "company": "Appointment Letter - Rahul Sharma - Trainee SW Engi.pdf",
+      "id": 4
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

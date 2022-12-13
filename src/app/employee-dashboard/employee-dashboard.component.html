@@ -1,0 +1,100 @@
+<div class="container-fluid g-0">
+<nav class="navbar sticky-top navbar-dark bg-dark h-100">
+    <div class="container-fluid">
+        <a href="#" class="navbar-brand mx-auto">MyUser</a>
+    </div>
+</nav>
+<main>
+    <!--TOOLBAR TO ADD AND SEARCH EMPLOYEES-->
+    <div class="toolbar">
+
+    
+    <div class="add-employee">
+        <button type="button" class="btn btn-outline-dark btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal"  #addUserButton>Add Users</button>
+    </div>
+
+    <div class="search-employee">
+        <input type="search" placeholder="Search Users" class="form-control" #searchInput
+        (input)="searchUsers(searchInput.value)">
+    </div>
+</div>  
+    <!--AREA TO DISPLAY ALL THE EMPLOYEES-->
+    <div class="employees">
+        <div class="row mt-5" *ngIf="users.length == 0">
+            <div class="col text-center">
+                <span class="text-secondary fs-2 fw-bold fst-italic">There are no employees added!</span>
+            </div>
+        </div>
+      <div class="row mt-4" *ngFor="let user of usersToDisplay; let ei = index;">
+        <div class="col">
+          <app-dashboard [user]="user" (onRemoveUser)="removeUser($event)" (onEditUser)="editUser($event)"></app-dashboard>
+        </div>
+      </div>  
+
+    </div>
+</main>
+</div>
+<!--MODAL-->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Enter Employee Information</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="employeeForm">
+            <div class="row">
+              <div class="form-group pt-3">
+                <div class="input-field">
+                    <span class="fa fa-user p-2"></span>
+                    <input formControlName="username" type="text" placeholder="Username">
+                </div>
+            </div>
+            </div>
+              <!--PERSONAL INFORMATION-->
+              <div class="row mt-3">
+                <div class="input-field">
+                  <span class="fa fa-lock p-2"></span>
+                  <input formControlName="password" [type]="type" placeholder="Password">
+                  <span (click)="hideShowPass()" class="fa {{eyeIcon}}"></span>
+              </div>
+            </div>
+              <div class="row mt-3">
+                <div class="col">
+                    <label for="email"><b>Email</b></label>
+                  <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <label for="profile" class="form-label"><b>Company's Icon</b></label>
+                    <input type="file" class="form-control" id="profile" #fileInput>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <label for="uname"><b>Games</b></label>
+                    <fieldset data-role = "controlgroup" data-type = "horizontal">
+                        <input formControlName="games" type = "radio" id = "fantasy" value="Fantasy"/>
+                        <label for = "radio 1" for="fantasy">&nbsp;&nbsp;Fantasy&nbsp;&nbsp;</label>
+            
+                        <input formControlName="games" type = "radio" id = "casino" value="Casino"/>
+                        <label for = "radio 2" for="casino">&nbsp;&nbsp;Casino&nbsp;&nbsp;</label>
+
+                        <input formControlName="games" type = "radio" id = "Fantasy & Casino" value="Fantasy & Casino"/>
+                        <label for = "radio 3" for="Fantasy & Casino">&nbsp;&nbsp;Fantasy & Casino&nbsp;&nbsp;</label>
+                     </fieldset>
+                </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser()">Insert</button>
+        </div>
+      </div>
+    </div>
+  </div>
